@@ -1,4 +1,5 @@
-﻿using GestaoUnidadeSocorroMaui.Models;
+﻿using GestaoUnidadeSocorroMaui.Interfaces;
+using GestaoUnidadeSocorroMaui.Models;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GestaoUnidadeSocorroMaui.Models
 {
-    public class Utilizador
+    public abstract class Utilizador : IUtilizador  //neste caso para não ser possivel instanciar a classe
     {
         #region Propriedades
         [PrimaryKey, AutoIncrement]
@@ -38,6 +39,23 @@ namespace GestaoUnidadeSocorroMaui.Models
         public virtual string ResponderOcorrencia()
         {
             return $"{Nome} está a responder a uma ocorrência";
+        }
+        #endregion
+
+        #region Métodos
+        public void CriarUtilizador(string nome, string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditarUtilizador(int id, string nome, string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EliminarUtilizador(int id)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

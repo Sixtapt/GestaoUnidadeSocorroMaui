@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GestaoUnidadeSocorroMaui.Models
 {
-    internal class EstadoOcorrencia
+    public class EstadoOcorrencia
     {
+
     }
 }
