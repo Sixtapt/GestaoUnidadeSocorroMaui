@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace GestaoUnidadeSocorroMaui.Models
 {
-    internal class CodigoPostal
+    public class CodigoPostal
     {
+        public string Codigo { get; set; }
+        public string Localidade { get; set; }
     }
 }
