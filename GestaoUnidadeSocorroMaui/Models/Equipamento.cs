@@ -11,29 +11,56 @@ namespace GestaoUnidadeSocorroMaui.Models
 {
 
 
+    /// <summary>
+    /// Representa um equipamento com suas propriedades e métodos de atualização e consulta.
+    /// </summary>
     public class Equipamento
     {
+        /// <summary>
+        /// Obtém ou define o número de série do equipamento.
+        /// </summary>
         [PrimaryKey, AutoIncrement]
         public int NumeroSerie { get; set; }
+
+        /// <summary>
+        /// Obtém ou define o nome do equipamento.
+        /// </summary>
         public string Nome { get; set; }
+
+        /// <summary>
+        /// Obtém ou define o estado de conservação do equipamento.
+        /// </summary>
         public EstadoConservacao EstadoConservacao { get; set; }
+
+        /// <summary>
+        /// Obtém ou define a manutenção do equipamento.
+        /// </summary>
         public Manutencao Manutencao { get; set; }
 
         #region Métodos de Atualização
 
-        // Método para atualizar o estado de conservação do equipamento
+        /// <summary>
+        /// Atualiza o estado de conservação do equipamento.
+        /// </summary>
+        /// <param name="novoEstado">Novo estado de conservação.</param>
         public void AtualizarEstadoConservacao(EstadoConservacao novoEstado)
         {
             EstadoConservacao = novoEstado;
         }
 
-        // Método para atualizar o nome do equipamento
+        /// <summary>
+        /// Atualiza o nome do equipamento.
+        /// </summary>
+        /// <param name="novoNome">Novo nome do equipamento.</param>
         public void AtualizarNome(string novoNome)
         {
             Nome = novoNome;
         }
 
-        // Método para atualizar a manutenção do equipamento
+        /// <summary>
+        /// Atualiza a manutenção do equipamento.
+        /// </summary>
+        /// <param name="novaManutencao">Nova manutenção do equipamento.</param>
         public void AtualizarManutencao(Manutencao novaManutencao)
         {
             Manutencao = novaManutencao;
@@ -43,19 +70,30 @@ namespace GestaoUnidadeSocorroMaui.Models
 
         #region Métodos de Consulta
 
-        // Método para obter o estado de conservação do equipamento
+        /// <summary>
+        /// Obtém o estado de conservação do equipamento.
+        /// </summary>
+        /// <returns>O estado de conservação do equipamento.</returns>
         public EstadoConservacao ObterEstadoConservacao()
         {
             return EstadoConservacao;
         }
 
-        // Método para obter o nome do equipamento
+        /// <summary>
+        /// Obtém o nome do equipamento.
+        /// </summary>
+        /// <returns>O nome do equipamento.</returns>
         public string ObterNome()
         {
             return Nome;
         }
 
-        // Método para obter a manutenção do equipamento
+        /// <summary>
+        /// Obtém a lista de manutenções do equipamento pelo número de série.
+        /// </summary>
+        /// <param name="db">Conexão com o banco de dados SQLite.</param>
+        /// <param name="numeroSerie">Número de série do equipamento.</param>
+        /// <returns>Lista de manutenções do equipamento.</returns>
         public static List<Manutencao> ObterManutencoesPorNumeroSerie(SQLiteConnection db, int numeroSerie)
         {
             return db.Table<Manutencao>().Where(m => m.NumeroSerie == numeroSerie.ToString()).ToList();
